@@ -1,0 +1,1 @@
+# a short script to illustrate the use of 'here' docs.

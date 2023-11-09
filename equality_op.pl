@@ -1,0 +1,1 @@
+# a script that demonstrates how to check for 'equality' between 'things'
