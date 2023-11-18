@@ -56,6 +56,31 @@ p @a4;
 
 # array 'slice' - take / return only the elements that you want
 my @a5 = (1 .. 20);
-my @a6 = @a5[0,1,2,3,4];
-p @a5;
+my @a6 = @a5[0,1,2,3,4]; 
+p @a5; 
+p @a6; # [1,2,3,4,5]
+
+# NOTE - where we want to index into an array ref you have to use the 'arrow' syntax
+my $a7 = [1..10];
+p $a7->[3]; # 4
+
+# following up this - we have 'lvalue' slices - elements you don't want have to be specified by 'undef'
+my ($first, $second, $third) = @a6;
 p @a6;
+print("Lvalue slices - First : $first / Second : $second / Third : $third \n");
+
+# more array notes
+# ================
+
+# more notes on array slices
+# --------------------------
+
+@b = (1..10);
+p @b;
+my $x = $b[1]; # to access an array element you use the 'scalar' notation
+p $x;
+my @y = @b[1,3]; # note the difference - here we are taking a slice from an array - elements at index 1 and 3.
+p @y; # [2,4]
+
+my $z = @b[1,2]; 
+p $z; # this may catch you out as this will return the 'last' value in the slice - '3'

@@ -40,3 +40,13 @@ foreach (@hr_keys) {
 # getting the size of a hash :-
 my $size = scalar keys %h2;
 p $size;
+
+# to take a 'slice' from a hash
+my %h3 = (
+    name => "Richard",
+    age => 21,
+    gender => 'male',
+);
+
+my @hash_values = @h3{ 'name', 'gender' }; # specify the 'keys' that you want
+p @hash_values;
