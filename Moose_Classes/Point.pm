@@ -8,6 +8,7 @@ has 'x' => (
   default   => 1,
   predicate => 'has_x'
 );
+
 has 'y' => ( 
   is        => 'ro', 
   isa       => 'Int',

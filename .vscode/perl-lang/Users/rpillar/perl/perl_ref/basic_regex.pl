@@ -1,1 +1,1 @@
-{"version":5,"vars":[]}
+{"version":5,"vars":[{"kind":2,"name":"Perl","containerName":"Modern","line":3},{"kind":2,"name":"feature","containerName":"","line":5},{"localvar":"my","line":7,"kind":13,"name":"$string","containerName":null,"definition":"my"},{"line":8,"kind":13,"name":"%string","containerName":null}]}
