@@ -1,8 +1,9 @@
 package Foo;
-use v5.36;  # which implies "use strict;"
+use v5.34;  # which implies "use strict;"
 
 $Foo::foo = 23;
 my $name = "Richard";
+our $age = 21; # need to define this with 'our' not 'my'
 
 {
     our $foo ;         # alias to $Foo::foo
@@ -15,10 +16,18 @@ my $name = "Richard";
 }
 print $Foo::foo . "\n"; # prints 23
 
+print "my global age is : $age\n";
+local_sub();
+
 # the rules for 'my' and 'our' relate to scoping - 'my' is local ('lexically' scoped) to a scope whereas
 # an 'our' variable is an alias to a package variable - 'globally' scoped.
 
-# no examples of using 'local' here - the docs suggest that it should not be used .....
+# 'local' can be used to 'localize' a variable that has been defined in the global scope - see the subroutine
+# below - see call above ....
+sub local_sub {
+    local $age = 22;
+    print "My local age is : $age\n"
+}
 
 # You can use 'state' to persist a variables value across calls - in this case we use a 'state' 
 # variable as a counter ...

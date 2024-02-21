@@ -1,3 +1,5 @@
+use Data::Printer;
+
 use lib './Moose_Classes';
 use Person;
 

@@ -83,5 +83,44 @@ if ( "My name is James" =~ /\bname\b/ ) {
     say 'I matched to the middle of the string (word boundary)';
 }
 
-# Matcching this or that
-#=======================
+# Matching this or that
+#======================
+
+# Grouping things
+# ===============
+
+# We can use the 'grouping' metacharaters - '(' and ')' - grouping allows part of the regex
+# to be treated as a single unit.
+
+if ( 'cab' =~ /(a|b)b/ ) {
+    say "cab matches ...."
+}    # matches 'cab' or 'xbb'
+
+# Extracting matches
+# ==================
+
+my $time = "10:11:12";
+if ($time =~ /(\d\d):(\d\d):(\d\d)/) {    # match hh:mm:ss format
+	my $hours = $1;
+	my $minutes = $2;
+	my $seconds = $3;
+
+    say 'the time is - hour : ' . $hours . ' / minutes : ' . $minutes . ' / seconds : ' . $seconds;
+}
+
+# A more complicated match (there could be many examples) is the following - get the last 8 bytes of a string
+# provided it only contains 'a-z' (no uppercase chars).
+my $str = "this is a long log message that has a filename at the end - testfile"; 
+my ( $filename ) = ( $str =~ m!([a-z]{8}$)! ); 
+say "My filename is : $filename ";
+
+# Named backreferences
+# ====================
+
+# in this example the 'description' has a 18 character 'reference' with a 'word' boundary at the start / end - this
+# is 'captured' in a named reference called 'reference' (in this case - could be anything). This named reference
+# can then be accessed using '$+{reference}' - in other words '$+{<name of reference>}'
+my $desc = "TESTMEAGAIN E KW9SA0ARVR7XXXCV12 ABC"; 
+if ( $desc =~ /\b(?<reference>[A-Z0-9]{18})\b/x ) { 
+    print( "I have a match : $+{reference}\n"); 
+}
