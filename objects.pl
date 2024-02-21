@@ -7,9 +7,11 @@
 # - A method is simply a subroutine that expects a reference to an object (or a package name, for class methods) as the first argument.
 
 # Unlike many other languages which support object orientation, Perl does not provide any special syntax for constructing an object. 
-# Objects are merely Perl data structures (hashes, arrays, scalars, filehandles, etc.) that have been explicitly associated with a particular class.
+# Objects are merely Perl data structures (hashes, arrays, scalars, filehandles, etc.) that have been explicitly associated 
+# with a particular class.
 #
-# That explicit association is created by the built-in bless function, which is typically used within the constructor subroutine of the class.
+# That explicit association is created by the built-in bless function, which is typically used within the constructor 
+# subroutine of the class.
 
 # For example :-
 
