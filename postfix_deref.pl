@@ -5,6 +5,10 @@ use Data::Printer;
 use feature 'postderef';
 use feature 'state';
 
+# the 'old' prefix way :-
+my @old = @{ [1,2,3,4,5] };
+p @old;
+
 # to turn an array ref into its elements, after the '->' use '@' with a star ('*')
 my @e1 = [1,2,3,4]->@*;
 p @e1;
