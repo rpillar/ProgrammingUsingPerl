@@ -84,3 +84,19 @@ p @y; # [2,4]
 
 my $z = @b[1,2]; 
 p $z; # this may catch you out as this will return the 'last' value in the slice - '3'
+
+# Psotfix Dereferecing
+# ====================
+
+# as of v5.20 we have postfix deferenceing. So prior to this to deref an array we would do something like :-
+my $c = [1,2,3,4,5];
+foreach( @{ $c } ) { print( "element of array ref is : $_ \n" )}
+
+# now we can :-
+foreach( $c->@* ) { print( "(postfix) element is : $_ \n" ); }
+
+# and we can even use postfix to get a slice :-
+my ($first, $second) = $c->@[0,3];
+print( "first : $first / second : $second\n" );
+
+# NOTE - getting a slice in this way also works for hashes (see hashes.pl). 
