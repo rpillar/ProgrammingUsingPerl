@@ -85,7 +85,7 @@ p @y; # [2,4]
 my $z = @b[1,2]; 
 p $z; # this may catch you out as this will return the 'last' value in the slice - '3'
 
-# Psotfix Dereferecing
+# Postfix Dereferecing
 # ====================
 
 # as of v5.20 we have postfix deferenceing. So prior to this to deref an array we would do something like :-

@@ -1,4 +1,5 @@
 # Perl supports a very limited kind of compile-time argument checking using function prototyping. This can be declared :-
+
 sub hello1 ($) { # expects a 'single' scalar arg
     my $name = shift;
     print("hello $name\n")

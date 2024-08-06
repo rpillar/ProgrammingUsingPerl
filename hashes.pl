@@ -50,3 +50,11 @@ my %h3 = (
 
 my @hash_values = @h3{ 'name', 'gender' }; # specify the 'keys' that you want
 p @hash_values;
+
+# Postfix notation
+# ================
+
+# also see arrays.pl
+
+my ( $name, $age ) = %h3->@{ 'name', 'age' };
+print( "name : $name / age : $age\n" ); # name : Richard / age : 21
