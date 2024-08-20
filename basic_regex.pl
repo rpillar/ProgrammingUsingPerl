@@ -124,3 +124,25 @@ my $desc = "TESTMEAGAIN E KW9SA0ARVR7XXXCV12 ABC";
 if ( $desc =~ /\b(?<reference>[A-Z0-9]{18})\b/x ) { 
     print( "I have a match : $+{reference}\n"); 
 }
+
+# More escape sequences and character classes
+# ===========================================
+
+# There are several escape sequences that convert characters or strings between upper and lower case
+my $x = "perl";
+my $string =~ /\u$x/;  # matches 'Perl' in $string
+
+$x = "M(rs?|s)\\."; # note the double backslash
+$string =~ /\l$x/;  # matches 'mr.', 'mrs.', and 'ms.'
+
+# A \L or \U indicates a lasting conversion of case, until terminated by \E or thrown over by another \U or \L. If there is no \E, case is converted 
+# until the end of the string.
+$x = "This word is in lower case:\L SHOUT\E";
+$x =~ /shout/;       # matches
+$x = "I STILL KEYPUNCH CARDS FOR MY 360";
+$x =~ /\Ukeypunch/;  # matches punch card string
+
+# The escape sequence \Q...\E quotes, or protects most non-alphabetic characters. They will work if they appear in a regular expression 
+# embedded directly in a program, but not when contained in a string that is interpolated in a pattern
+$x = "\QThat !^*&%~& cat!";
+$x =~ /\Q!^*&%~&\E/;  # check for rough language
