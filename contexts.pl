@@ -7,6 +7,12 @@ my @numbers = (1 .. 10);
 my $number_of_elements = @numbers;
 p $number_of_elements; # 10
 
+# when we assign / return a scalar to a list - this is 'list' context
+my @list_number = $number_of_elements;
+p @list_number; # [ 10 ]
+
+
+
 # in terms of the 'localtime(time)' function we can use 'list' context to extract the various elements of 'time'
 # that are returned.
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
@@ -24,3 +30,8 @@ my ($another_sec, $another_min, @the_rest) = localtime(time);
 p $another_sec;
 p $another_min;
 p @the_rest;
+
+# numeric / string / boolean context
+my $numeric_x =  0 + $x;  # forces numeric context
+my $stringy_x = '' . $x;  # forces string  context
+my $boolean_x =    !!$x;  # forces boolean context

@@ -1,4 +1,6 @@
 # hashes are a group of un-ordered key / value pairs
+use warnings;
+use strict;
 use Data::Printer;
 
 # create a hash-ref

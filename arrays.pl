@@ -1,3 +1,5 @@
+use strict;
+use warnings;
 use Data::Printer;
 
 # an array in some respects can be thought of as a 'variable' that has a 'list assigned to it. 
@@ -65,9 +67,9 @@ my $a7 = [1..10];
 p $a7->[3]; # 4
 
 # following up this - we have 'lvalue' slices - elements you don't want have to be specified by 'undef'
-my ($first, $second, $third) = @a6;
+my ($first_again, $second, $third) = @a6;
 p @a6;
-print("Lvalue slices - First : $first / Second : $second / Third : $third \n");
+print("Lvalue slices - First : $first_again / Second : $second / Third : $third \n");
 
 # more array notes
 # ================
@@ -75,28 +77,46 @@ print("Lvalue slices - First : $first / Second : $second / Third : $third \n");
 # more notes on array slices
 # --------------------------
 
-@b = (1..10);
-p @b;
-my $x = $b[1]; # to access an array element you use the 'scalar' notation
+my @e = (1..10);
+p @e;
+my $x = $e[1]; # to access an array element you use the 'scalar' notation
 p $x;
-my @y = @b[1,3]; # note the difference - here we are taking a slice from an array - elements at index 1 and 3.
+my @y = @e[1,3]; # note the difference - here we are taking a slice from an array - elements at index 1 and 3.
 p @y; # [2,4]
 
-my $z = @b[1,2]; 
+my $z = @e[1,2];
 p $z; # this may catch you out as this will return the 'last' value in the slice - '3'
 
 # Postfix Dereferecing
 # ====================
 
 # as of v5.20 we have postfix deferenceing. So prior to this to deref an array we would do something like :-
-my $c = [1,2,3,4,5];
-foreach( @{ $c } ) { print( "element of array ref is : $_ \n" )}
+my $e = [1,2,3,4,5];
+foreach( @{ $e } ) { print( "element of array ref is : $_ \n" )}
 
 # now we can :-
-foreach( $c->@* ) { print( "(postfix) element is : $_ \n" ); }
+foreach( $e->@* ) { print( "(postfix) element is : $_ \n" ); }
 
 # and we can even use postfix to get a slice :-
-my ($first, $second) = $c->@[0,3];
-print( "first : $first / second : $second\n" );
+#my ($fourth, $fifth) = $c->@[0,3];
+#print( "first : $fourth / second : $fifth\n" );
 
 # NOTE - getting a slice in this way also works for hashes (see hashes.pl). 
+
+# test the 'passing' of an array to a function :-
+sub process_array_1 {
+    my $a = shift;
+    p $a;
+}
+
+my @a8 = (1,2,3,4);
+process_array_1(@a8);  # returns '1'
+process_array_1(\@a8); # when passed as an 'array ref' all is okay
+
+# when using the perl DBI interface - the 'selectall' methods return data as an array - with each 'row' as a 
+# separate arrayref. If I'm just retrieving one field then its easy to create an array where each element is the
+# 'value' rather than an 'arrayref' (containing the 'value') ;-
+my @a9 = ([1,2,3],[4,5,6],[7,8,9]);
+my @all = map {@$_} @a9;
+p @a9;
+p @all;

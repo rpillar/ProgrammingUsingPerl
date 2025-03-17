@@ -1,6 +1,8 @@
 # a script that demonstrates how to check for 'equality' between 'things'
 
 use feature 'say';
+use strict;
+use warnings;
 
 # Binary "==" returns true if the left argument is numerically equal to the right argument.
 if (1 == 1) { say("It turns out that one is equal to one (numerically of course)") }

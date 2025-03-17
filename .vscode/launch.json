@@ -1,0 +1,11 @@
+{
+    "configurations": [
+    {
+        "type": "perl",
+        "request": "launch",
+        "name": "Perl Debug",
+        "program": "${workspaceFolder}/${relativeFile}",
+        "stopOnEntry": true
+    }
+    ]
+}

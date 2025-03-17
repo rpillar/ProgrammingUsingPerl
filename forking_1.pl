@@ -1,7 +1,7 @@
 # Perl can spawn multiple processes with the fork function and this can be of benefit (in the right circumstances)
 # when attempting to manage certain workloads.
 
-# DEBUG note - if there is an issue when trying to build / run concurrent scripts then consider using 
+# DEBUG note - if there is an issue when trying to build / run concurrent scripts then consider using
 # 'strace -e process,signal /path/to/your/program' as this will allow you to see when the child processes
 # are exiting and what signals are being sent.
 
@@ -10,11 +10,14 @@
 
 #!/usr/bin/perl
 
+use strict;
+use warnings;
+
 use Data::Printer;
 use feature 'say';
 
-# create a 'child' process using 'fork' - two processes will now be executing. The 'pid' returned from 'fork' 
-# to the 'parent' process is that of the 'child' process and '0' to the newly created 'child' process. 
+# create a 'child' process using 'fork' - two processes will now be executing. The 'pid' returned from 'fork'
+# to the 'parent' process is that of the 'child' process and '0' to the newly created 'child' process.
 my $pid = fork;
 # what if the 'fork' fails (out of memory - for example)...
 die "failed to fork: $!" unless defined $pid;
@@ -52,11 +55,11 @@ for (1..$max_workers) {
     exit;
 }
 
-# waitpid when given an argument of '-1' will block until 'any' child process exits 
+# waitpid when given an argument of '-1' will block until 'any' child process exits
 my $child_exiting_pid;
 do {
   $child_exiting_pid = waitpid -1, 0;
 } while ($child_exiting_pid > 0);
 
-# Note that neither of these examples are particularly robust - it would be better to make use of 
+# Note that neither of these examples are particularly robust - it would be better to make use of
 # a module like  Parallel::ForkManager -> see forking_2.pl
