@@ -1,5 +1,5 @@
 # Perl v5.20 added a 'postfix' way of dereferencing (became stable in v5.24) such that rather then using
-# the complicated 'prefix' method we can turn a refrence into its contents
+# the complicated 'prefix' method we can turn a reference into its contents
 
 use Data::Printer;
 use feature 'postderef';

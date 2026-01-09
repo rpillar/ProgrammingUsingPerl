@@ -18,6 +18,10 @@
 # when using 'require' a module is loaded at the point of execution - this means that we can 
 # (if required) load modules conditionally as in this example :-
 
+# note that when using 'require' you can do :-
+# - `perl -c <script>` and it will 'pass' but `perl <script>` will fail at 'runtime' as the required <script> cannot be found
+# in `%INC`
+
 use strict;
 use warnings;
 

@@ -4,6 +4,7 @@
     <option name="perlInterpreter" value="Local, Perlbrew[perl-5.34.0]: Perl 5.34.0" />
   </component>
   <component name="Perl5XSubsState">
+    <option name="isActual" value="false" />
     <option name="myFilesMap">
       <map>
         <entry key="$USER_HOME$/perl5/lib/perl5/darwin-2level/auto/Compiler/Lexer/Lexer.bundle" value="1727868312000" />
